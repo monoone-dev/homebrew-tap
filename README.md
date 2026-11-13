@@ -9,8 +9,12 @@ IndexOne requires macOS 13.4 or later; RigOne requires macOS 13.0 or later.
 
 ```sh
 brew tap monoone-dev/tap
+brew trust --cask monoone-dev/tap/index-one monoone-dev/tap/rig-one
 brew install --cask index-one rig-one
 ```
+
+Homebrew 7 requires explicit cask trust. Older versions without `brew trust` can omit that line.
+For a direct install on Homebrew 7, tap and trust the selected cask first.
 
 Or install either app directly:
 
@@ -46,7 +50,7 @@ This removes the application bundles. The casks do not delete notebooks, setting
 ## Maintain a release
 
 After publishing the stable DMG and `SHA256SUMS.txt` to the app's public release, update this tap
-in a fresh branch. The helper requires Python 3.11+ and curl, and only accesses public endpoints:
+in a fresh branch. The helper requires Python 3.9+ and curl, and only accesses public endpoints:
 
 ```sh
 python3 scripts/update-casks.py index-one
@@ -61,7 +65,7 @@ app before writing. It does not publish a release, commit, push or merge.
 Review the diff, then validate with a tap checkout at that revision:
 
 ```sh
-brew style --cask Casks/index-one.rb Casks/rig-one.rb
+brew style --cask monoone-dev/tap/index-one monoone-dev/tap/rig-one
 brew audit --cask --strict --online monoone-dev/tap/index-one monoone-dev/tap/rig-one
 brew livecheck --cask monoone-dev/tap/index-one monoone-dev/tap/rig-one
 python3 scripts/update-casks.py all --check

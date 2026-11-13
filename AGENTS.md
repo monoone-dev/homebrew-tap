@@ -3,7 +3,7 @@
 Public Homebrew casks for IndexOne and RigOne. Follow the MonoOne workspace rules.
 
 - `Casks/*.rb`: versioned, SHA256-pinned downloads from public landing-page releases.
-- `scripts/update-casks.py`: Python 3.11+ helper; verifies checksums and DMG bytes before updating.
+- `scripts/update-casks.py`: Python 3.9+ helper; verifies checksums and DMG bytes before updating.
 - `README.md`: installation, updates and maintainer instructions.
 - Both apps ship Apple Silicon builds. Match macOS requirements to the downloaded app.
 - Never use `sha256 :no_check`, mutable download URLs, credentials, private source or private links.
@@ -12,7 +12,7 @@ Public Homebrew casks for IndexOne and RigOne. Follow the MonoOne workspace rule
 - Add tests only on explicit request. Narrow checks for changed casks:
 
 ```sh
-brew style --cask Casks/index-one.rb Casks/rig-one.rb
+brew style --cask monoone-dev/tap/index-one monoone-dev/tap/rig-one
 brew audit --cask --strict --online monoone-dev/tap/index-one monoone-dev/tap/rig-one
 brew livecheck --cask monoone-dev/tap/index-one monoone-dev/tap/rig-one
 python3 scripts/update-casks.py all --check

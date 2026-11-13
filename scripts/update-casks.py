@@ -51,9 +51,13 @@ def refresh(app, directory):
     if len(matches) != 1:
         raise ValueError(f"{app}: expected exactly one checksum for {filename}")
     dmg = directory / filename
+    print(f"{app}: downloading and verifying {filename}", flush=True)
     download(base + filename, dmg)
+    hasher = hashlib.sha256()
     with dmg.open("rb") as stream:
-        digest = hashlib.file_digest(stream, "sha256").hexdigest()
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            hasher.update(chunk)
+    digest = hasher.hexdigest()
     if digest != matches[0]:
         raise ValueError(f"{app}: DMG does not match SHA256SUMS.txt")
     api_digest = assets[filename].get("digest")

@@ -1,6 +1,6 @@
 cask "rig-one" do
-  version "1.24.0"
-  sha256 "ef0642c7d95c9072265030b73dc2b80b610a1438b9be3ed264f0d20a478476f4"
+  version "1.25.0"
+  sha256 "513c8d016ecd39462079833c3edc835421aed6d93d0a8e5b79e4c61122b98e49"
 
   url "https://github.com/monoone-dev/rig-one-landing-page/releases/download/v#{version}/RigOne_#{version}_aarch64.dmg"
   name "RigOne"

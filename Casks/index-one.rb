@@ -1,6 +1,6 @@
 cask "index-one" do
-  version "3.23.0"
-  sha256 "c758da5e190b42ad74276a62a03d01a90d1c9fb79a54c04c9bd906c8fa5e00fb"
+  version "3.24.0"
+  sha256 "f3131ab1a6b98e49833fcd7b77f1cdecc1cb6999562c03b19e31e0e624c67111"
 
   url "https://github.com/monoone-dev/index-one-landing-page/releases/download/v#{version}/IndexOne-#{version}.dmg"
   name "IndexOne"
